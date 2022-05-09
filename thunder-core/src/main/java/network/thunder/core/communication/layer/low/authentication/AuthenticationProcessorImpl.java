@@ -147,7 +147,7 @@ public class AuthenticationProcessorImpl extends AuthenticationProcessor {
         node.pubKeyClient = ecKey;
 
         ECKey pubKeyClient = node.pubKeyClient;
-        ECKey pubKeyTempServer = node.ephemeralKeyServer;
+        ECKey pubKeyTempServer = node.getEphemeralKeyServer();
 
         byte[] data = new byte[pubKeyClient.getPubKey().length + pubKeyTempServer.getPubKey().length];
         System.arraycopy(pubKeyClient.getPubKey(), 0, data, 0, pubKeyClient.getPubKey().length);

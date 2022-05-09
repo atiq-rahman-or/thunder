@@ -65,7 +65,7 @@ public class EncryptionProcessorImpl extends EncryptionProcessor {
 
     private void sendInitialMessageIfNotSent () {
         if (!encSent) {
-            executor.sendMessageUpwards(messageFactory.getEncryptionInitialMessage(node.ephemeralKeyServer.getPubKey()));
+            executor.sendMessageUpwards(messageFactory.getEncryptionInitialMessage(node.getEphemeralKeyServer().getPubKey()));
             encSent = true;
         }
     }
@@ -98,7 +98,7 @@ public class EncryptionProcessorImpl extends EncryptionProcessor {
             EncryptionInitialMessage encryptionInitial = (EncryptionInitialMessage) message;
 
             node.ephemeralKeyClient = ECKey.fromPublicOnly(encryptionInitial.key);
-            node.ecdhKeySet = ECDH.getSharedSecret(node.ephemeralKeyServer, node.ephemeralKeyClient);
+            node.ecdhKeySet = ECDH.getSharedSecret(node.getEphemeralKeyServer(), node.ephemeralKeyClient);
 
             sendInitialMessageIfNotSent();
             onKeyExchangeFinished();

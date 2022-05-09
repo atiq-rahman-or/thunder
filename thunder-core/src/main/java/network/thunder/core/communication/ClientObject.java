@@ -19,7 +19,7 @@ public class ClientObject {
     public ECKey pubKeyClient;
 
     //Encryption keys
-    public ECKey ephemeralKeyServer;
+    private ECKey ephemeralKeyServer;
     public ECKey ephemeralKeyClient;
     public ECDHKeySet ecdhKeySet;
 
@@ -88,4 +88,8 @@ public class ClientObject {
                 ", isServer=" + isServer +
                 '}';
     }
+
+	public ECKey getEphemeralKeyServer() {
+		return ephemeralKeyServer;
+	}
 }
